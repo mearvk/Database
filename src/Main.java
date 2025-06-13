@@ -59,7 +59,7 @@ public class Main
 
         interpreter.interpret("ADD COLUMN '//social security number' INTO TABLE '//employees'");
 
-
+        interpreter.interpret("ADD COLUMN '//salary' INTO TABLE '//employees'");
     }
 
 
