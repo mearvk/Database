@@ -1,6 +1,6 @@
 import contexts.BodhiContext;
 import database.*;
-import network.BodhiServer;
+import network.RemoteBodhiServer;
 
 public class Main
 {
@@ -8,9 +8,19 @@ public class Main
     {
         BodhiDatabase database = new BodhiDatabase(new Database("//microsoft"));
 
+        //
+        
         Result result;
 
+        //
+        
         result = database.insert("//microsoft", new Table("//employees"));
+        
+        result = database.insert("//microsoft", new Table("//parking"));
+
+        result = database.insert("//microsoft", new Table("//resumes"));
+
+        result = database.insert("//microsoft", new Table("//security"));
 
         //
 
@@ -50,17 +60,17 @@ public class Main
 
         //
 
-        BodhiServer server = new BodhiServer(new BodhiContext(database));
+        RemoteBodhiServer server = new RemoteBodhiServer(new BodhiContext(database));
 
         //
 
         SQLInterpreter interpreter = new SQLInterpreter(database);
 
-        interpreter.interpret("ADD TABLE '//employees'");
+        interpreter.interpret("ALTER DATABASE '//microsoft' ADD TABLE '//employees'");
 
-        interpreter.interpret("ADD COLUMN '//social security number' INTO TABLE '//employees'");
+        interpreter.interpret("ALTER DATABASE '//microsoft' ADD COLUMN '//social security number' WHERE TABLE EQUALS '//employees'");
 
-        interpreter.interpret("INSERT INTO TABLE '//employees' AT COLUMN '//social security number' VALUE '123-456-7890'");
+        interpreter.interpret("INSERT INTO DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' VALUE '123-456-7890'");
     }
 }
 

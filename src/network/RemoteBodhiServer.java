@@ -3,19 +3,18 @@ package network;
 import contexts.BodhiContext;
 import database.BodhiDatabase;
 import database.SQLInterpreter;
-import database.Table;
 
 import java.io.*;
 import java.util.ArrayList;
 
-public class BodhiServer extends BaseServer
+public class RemoteBodhiServer extends BaseServer
 {
     public OutputThread outputthread;
 
     public InputThread inputthread;
 
     public BodhiDatabase database;
-    public BodhiServer(BodhiContext context)
+    public RemoteBodhiServer(BodhiContext context)
     {
         super(39001);
 
@@ -32,10 +31,10 @@ public class BodhiServer extends BaseServer
 
     public static class OutputThread extends Thread
     {
-        public BodhiServer server;
+        public RemoteBodhiServer server;
 
         public ArrayList<String> outputbuffer = new ArrayList<>(10);
-        public OutputThread(BodhiServer server)
+        public OutputThread(RemoteBodhiServer server)
         {
             this.server = server;
         }
@@ -79,12 +78,12 @@ public class BodhiServer extends BaseServer
 
     public static class InputThread extends Thread
     {
-        public BodhiServer server;
+        public RemoteBodhiServer server;
 
         public ArrayList<String> inputbuffer = new ArrayList<>();
 
         public InputInterpreter interpreter = new InputInterpreter(this);
-        public InputThread(BodhiServer server)
+        public InputThread(RemoteBodhiServer server)
         {
             this.server = server;
         }
@@ -119,7 +118,7 @@ public class BodhiServer extends BaseServer
 
     public static class InputInterpreter extends Thread
     {
-        public BodhiServer server;
+        public RemoteBodhiServer server;
 
         public BodhiDatabase database;
 
