@@ -10,6 +10,7 @@ public class BaseServer implements Runnable
     public Socket socket;
 
     public Integer port = 0;
+
     public BaseServer()
     {
 
