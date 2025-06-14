@@ -1,3 +1,4 @@
+import contexts.BodhiContext;
 import database.*;
 import network.BodhiServer;
 
@@ -5,7 +6,7 @@ public class Main
 {
     public static void main(String[] args)
     {
-        BodhiDatabase database = new BodhiDatabase("//microsoft");
+        BodhiDatabase database = new BodhiDatabase(new Database("//microsoft"));
 
         Result result;
 
@@ -49,7 +50,7 @@ public class Main
 
         //
 
-        BodhiServer server = new BodhiServer(database);
+        BodhiServer server = new BodhiServer(new BodhiContext(database));
 
         //
 
@@ -59,12 +60,7 @@ public class Main
 
         interpreter.interpret("ADD COLUMN '//social security number' INTO TABLE '//employees'");
 
-        interpreter.interpret("ADD COLUMN '//salary' INTO TABLE '//employees'");
-
-        interpreter.interpret("ADD COLUMN '//phone number' INTO TABLE '//employees'");
-
+        interpreter.interpret("INSERT INTO TABLE '//employees' AT COLUMN '//social security number' VALUE '123-456-7890'");
     }
-
-
 }
 

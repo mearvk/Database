@@ -1,5 +1,6 @@
 package network;
 
+import contexts.BodhiContext;
 import database.BodhiDatabase;
 import database.SQLInterpreter;
 import database.Table;
@@ -14,11 +15,11 @@ public class BodhiServer extends BaseServer
     public InputThread inputthread;
 
     public BodhiDatabase database;
-    public BodhiServer(BodhiDatabase database)
+    public BodhiServer(BodhiContext context)
     {
         super(39001);
 
-        this.database = database;
+        this.database = context.database;
 
         this.outputthread = new OutputThread(this);
 

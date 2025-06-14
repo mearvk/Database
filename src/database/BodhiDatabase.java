@@ -4,10 +4,15 @@ import java.util.HashMap;
 
 public class BodhiDatabase
 {
+    public Database database;
+
     public String name;
-    public BodhiDatabase(String name)
+
+    public BodhiDatabase(Database database)
     {
-        this.name = name;
+        this.database = database;
+
+        this.name = database.name;
     }
 
     public HashMap<String, Table> tables = new HashMap<>();

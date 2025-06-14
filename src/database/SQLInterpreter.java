@@ -63,7 +63,7 @@ public class SQLInterpreter
             System.out.println("Added column '"+columnname+"' to table '"+tablename+"'.");
         }
 
-        else if(line.strip().startsWith("INSERT INTO COLUMN")) //e.g. INSERT INTO COLUMN "//Social Security Number" INTO TABLE "//employees"
+        else if(line.strip().startsWith("INSERT INTO TABLE")) //e.g. "INSERT INTO TABLE '//employees' AT COLUMN '//social security number' VALUE '123-456-7890'"
         {
 
         }
