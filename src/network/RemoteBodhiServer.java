@@ -35,6 +35,7 @@ public class RemoteBodhiServer extends BaseServer
         public RemoteBodhiServer server;
 
         public ArrayList<String> outputbuffer = new ArrayList<>(10);
+
         public OutputThread(RemoteBodhiServer server)
         {
             this.server = server;
@@ -84,6 +85,7 @@ public class RemoteBodhiServer extends BaseServer
         public ArrayList<String> inputbuffer = new ArrayList<>();
 
         public InputInterpreter interpreter = new InputInterpreter(this);
+
         public InputThread(RemoteBodhiServer server)
         {
             this.server = server;
