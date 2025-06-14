@@ -14,6 +14,7 @@ public class RemoteBodhiServer extends BaseServer
     public InputThread inputthread;
 
     public BodhiDatabase database;
+
     public RemoteBodhiServer(BodhiContext context)
     {
         super(39001);
