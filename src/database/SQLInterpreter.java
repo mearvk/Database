@@ -17,9 +17,9 @@ public class SQLInterpreter
 
             String tablename = line.replace(command, "").replace("'","").strip();
 
-            this.database.tables.put(tablename, new Table(tablename));
+            //this.database.dtables.put(tablename, new Table(tablename));
 
-            System.out.println("Added table '"+tablename+"' to database '"+this.database.name+"'.");
+            //System.out.println("Added table '"+tablename+"' to database '"+this.database.name+"'.");
         }
 
         else if(line.strip().startsWith("ADD COLUMN")) //e.g. ADD COLUMN "//Social Security Number" INTO TABLE "//employees"
@@ -56,9 +56,9 @@ public class SQLInterpreter
 
             //
 
-            Table table = this.database.tables.get(tablename);
+            //Table table = this.database.tables.get(tablename);
 
-            table.columns.put(new Column(columnname));
+            //table.columns.put(new Column(columnname));
 
             System.out.println("Added column '"+columnname+"' to table '"+tablename+"'.");
         }

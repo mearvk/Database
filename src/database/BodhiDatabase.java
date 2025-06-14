@@ -4,92 +4,114 @@ import java.util.HashMap;
 
 public class BodhiDatabase
 {
-    public Database database;
-
-    public String name;
+    public HashMap<String, Database> databases = new HashMap<>();
 
     public BodhiDatabase(Database database)
     {
-        this.database = database;
-
-        this.name = database.name;
+        this.databases.put(database.name, database);
     }
 
-    public HashMap<String, Table> tables = new HashMap<>();
-
-    public Result insert(String database, String table, String column, Object object)
+    public Result insert(String databasename, String tablename, String columnname, Object object)
     {
-        Table _table;
+        Result result = new Result();
 
-        _table = this.tables.get(table);
+        //
 
-        if(_table==null)
+        Database database = this.databases.get(databasename);
+
+        if(database==null)
         {
-            Result result = new Result();
-
-            result.error = "No such table: ( "+table+" ).";
+            result.error = "";
 
             return result;
         }
 
         //
 
-        Column _column;
+        Table table = database.tables.get(tablename);
 
-        _column = _table.columns.get(column);
+        if(table==null)
+        {
+            result.error = "";
 
-        _column.items.add(object);
-
-        //
-
-        Result result = new Result();
-
-        result.table = _table;
-
-        result.table.column = _column;
-
-        result.table.column.object = object;
+            return result;
+        }
 
         //
+
+        Column column = table.columns.get(columnname);
+
+        if(column==null)
+        {
+            result.error = "";
+
+            return result;
+        }
+
+        result = database.insert(table, column, object);
 
         return result;
     }
 
-    public Result insert(String database, Table table)
+    public Result insert(String databasename, Table table)
     {
-        this.tables.put(table.name, table);
-
         Result result = new Result();
+
+        //
+
+        Database database = this.databases.get(databasename);
+
+        if(database==null)
+        {
+            result.error = "Database not found.";
+
+            return result;
+        }
+
+        //
+
+        result = database.insert(table);
+
+        return result;
+    }
+
+    public Result insert(String databasename, String tablename, Column column)
+    {
+        Result result = new Result();
+
+        //
+
+        Database database = this.databases.get(databasename);
+
+        if(database==null)
+        {
+            result.error = "";
+
+            return result;
+        }
+
+        //
+
+        Table table = database.tables.get(tablename);
+
+        if(table==null)
+        {
+            result.error = "";
+
+            return result;
+        }
+
+        //
+
+        result = database.insert(table, column);
+
+        //
+
+        result.database = database;
 
         result.table = table;
 
-        return result;
-    }
-
-    public Result insert(String database, String table, Column column)
-    {
-        Table _table = this.tables.get(table);
-
-        if(_table==null)
-        {
-            Result result = new Result();
-
-            result.error = "No such table: ( "+table+" ).";
-
-            return result;
-        }
-
-        _table.columns.put(column);
-
-        //
-
-        Result result = new Result();
-
-        result.database = this;
-
-        result.table = _table;
-
-        result.table.column = column;
+        result.column = column;
 
         return result;
     }
