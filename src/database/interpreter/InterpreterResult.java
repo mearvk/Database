@@ -8,9 +8,9 @@ public class InterpreterResult
 
     public InterpreterResult()
     {
-        this.stdout = "";
+        this.stdout = ".";
 
-        this.stderr = "";
+        this.stderr = ".";
     }
 
     public InterpreterResult(String stdout, String stderr)
