@@ -1,8 +1,8 @@
-package network;
+package bodhi.network;
 
 import contexts.BodhiContext;
-import database.BodhiDatabase;
-import database.SQLInterpreter;
+import bodhi.BodhiDatabase;
+import database.interpreter.SQLInterpreter;
 
 import java.io.*;
 import java.util.ArrayList;

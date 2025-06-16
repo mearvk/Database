@@ -1,7 +1,6 @@
 package contexts;
 
-import database.BodhiDatabase;
-import database.Database;
+import bodhi.BodhiDatabase;
 
 public class BodhiContext
 {

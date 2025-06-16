@@ -1,4 +1,9 @@
-package database;
+package bodhi;
+
+import database.Column;
+import database.Database;
+import database.Result;
+import database.Table;
 
 import java.util.HashMap;
 

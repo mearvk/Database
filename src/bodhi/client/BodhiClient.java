@@ -1,4 +1,4 @@
-package client;
+package bodhi.client;
 
 public class BodhiClient
 {
