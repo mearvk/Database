@@ -128,12 +128,55 @@ public class SQLInterpreter
 
             return result;
         }
-        else if(line.startsWith("INSERT INTO TABLE")) //e.g. INSERT INTO DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' VALUE '123-456-7890'
+        else if(line.startsWith("INSERT INTO TABLE") && line.contains("WHERE TABLE EQUALS") && line.contains("WHERE COLUMN EQUALS")) //e.g. INSERT INTO DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' VALUE '123-456-7890'
         {
             InterpreterResult result = new InterpreterResult();
 
             //
 
+            Pattern pattern = Pattern.compile(".*'([^']*)'.*");
+
+            Matcher matcher = pattern.matcher(line);
+
+            if(matcher.matches())
+            {
+                String databasename = matcher.group(1);
+
+                Database database = this.bodhidatabase.databases.get(databasename);
+
+                if(database != null)
+                {
+                    String tablename = matcher.group(2);
+
+                    if(tablename != null)
+                    {
+                        Table table = database.tables.get(tablename);
+
+                        if(table != null)
+                        {
+                            String columnname = matcher.group(3);
+
+                            if(columnname != null)
+                            {
+                                Column column = table.columns.get(columnname);
+
+                                if(column != null) //Add support for File object types
+                                {
+                                    String value = matcher.group(4);
+
+                                    database.insert(table, column, value);
+                                }
+                                else return new InterpreterResult("Column reference was unexpectedly null.","No errors.");
+                            }
+                            else return new InterpreterResult("No column name found.","No errors.");
+                        }
+                        else return new InterpreterResult("Table reference unexpectedly null.","No errors.");
+                    }
+                    else return new InterpreterResult("No table name found.","No errors.");
+                }
+                else return new InterpreterResult("Database reference unexpectedly null.","No errors.");
+            }
+            else return new InterpreterResult("No matches found.","No errors.");
             //
 
             return result;
