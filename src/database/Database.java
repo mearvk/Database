@@ -20,7 +20,7 @@ public class Database
 
             result = new Result();
 
-            result.error = "Table is NULL";
+            result.error = "Table is unexpectedly null.";
 
             return result;
         }
@@ -33,7 +33,7 @@ public class Database
 
             result = new Result();
 
-            result.error = "Column is NULL";
+            result.error = "Column is unexpectedly null.";
 
             return result;
         }

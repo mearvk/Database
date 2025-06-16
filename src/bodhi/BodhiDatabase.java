@@ -26,7 +26,7 @@ public class BodhiDatabase
 
         if(database==null)
         {
-            result.error = "";
+            result.error = "No such database.";
 
             return result;
         }
@@ -37,7 +37,7 @@ public class BodhiDatabase
 
         if(table==null)
         {
-            result.error = "";
+            result.error = "No such table name.";
 
             return result;
         }
@@ -48,7 +48,7 @@ public class BodhiDatabase
 
         if(column==null)
         {
-            result.error = "";
+            result.error = "No such column name.";
 
             return result;
         }
