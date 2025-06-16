@@ -76,7 +76,7 @@ public class Main
 
         interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ADD TABLE '//ages'");
 
-        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ADD COLUMN '//social security number' WHERE TABLE EQUALS '//employees'");
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ALTER TABLE '//employees' ADD COLUMN '//social security number'");
 
         interpreter.result =  interpreter.interpret("INSERT INTO DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' VALUE '123-456-7890'");
     }

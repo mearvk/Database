@@ -23,6 +23,8 @@ public class SQLInterpreter
     {
         line = line.strip();
 
+        //
+
         if(line.startsWith("ADD DATABASE")) //e.g. ADD DATABASE '//citizens'
         {
             InterpreterResult result = new InterpreterResult();
@@ -81,7 +83,7 @@ public class SQLInterpreter
 
             return result;
         }
-        else if(line.startsWith("ALTER DATABASE") && line.contains("ADD COLUMN")) //e.g. ALTER DATABASE '//citizens' ALTER TABLE '//employees' ADD COLUMN '//social security number'
+        else if(line.startsWith("ALTER DATABASE") && line.contains("ADD TABLE") && line.contains("ADD COLUMN")) //e.g. ALTER DATABASE '//citizens' ALTER TABLE '//employees' ADD COLUMN '//social security number'
         {
             InterpreterResult result = new InterpreterResult();
 
