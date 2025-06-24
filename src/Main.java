@@ -10,7 +10,7 @@ public class Main
     {
         BodhiContext context;
 
-        BodhiDatabase bodhiDatabase = new BodhiDatabase(new Database("//microsoft"), context =new BodhiContext("//context"));
+        BodhiDatabase bodhiDatabase = new BodhiDatabase(new Database("//microsoft"), context = new BodhiContext("//context"));
 
         RemoteBodhiServer bodhiServer = new RemoteBodhiServer(context);
 
