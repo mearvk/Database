@@ -17,7 +17,7 @@ public class BodhiClient
     {
         try
         {
-            this.socket = new Socket("mearvk.us",PORT);
+            this.socket = new Socket(BodhiClient.HOST, BodhiClient.PORT);
 
             this.scanner = new Scanner(System.in);
 
