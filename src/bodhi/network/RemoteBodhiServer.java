@@ -2,6 +2,7 @@ package bodhi.network;
 
 import contexts.BodhiContext;
 import bodhi.BodhiDatabase;
+import contexts.DatabaseContext;
 import database.interpreter.SQLInterpreter;
 
 import java.io.*;
@@ -9,32 +10,59 @@ import java.util.ArrayList;
 
 public class RemoteBodhiServer extends BaseServer
 {
+    public static final Integer PORT = 39001;
+
+    public DatabaseContext context;
+
     public OutputThread outputthread;
 
-    public InputThread inputthread;
+    public InputThread inputThread;
 
     public BodhiDatabase database;
 
+    public RemoteBodhiServer()
+    {
+        super(PORT);
+    }
+
     public RemoteBodhiServer(BodhiContext context)
     {
-        super(39001);
+        super(PORT);
+
+        this.context = context;
 
         this.database = context.database;
 
         this.outputthread = new OutputThread(this);
 
-        this.inputthread = new InputThread(this);
+        this.inputThread = new InputThread(this);
+
+        this.context.inputStream = inputThread.inputStream;
+
+        this.context.outputStream = outputthread.outputStream;
 
         this.outputthread.start();
 
-        this.inputthread.start();
+        this.inputThread.start();
+    }
+
+    public void setContext(DatabaseContext context)
+    {
+        this.context = context;
+    }
+
+    public void addBodhiDatabase(BodhiDatabase database)
+    {
+        this.database = database;
     }
 
     public static class OutputThread extends Thread
     {
         public RemoteBodhiServer server;
 
-        public ArrayList<String> outputbuffer = new ArrayList<>(10);
+        public OutputStream outputStream;
+
+        public ArrayList<String> outputBuffer = new ArrayList<>(10);
 
         public OutputThread(RemoteBodhiServer server)
         {
@@ -44,9 +72,18 @@ public class RemoteBodhiServer extends BaseServer
         @Override
         public void run()
         {
+            try
+            {
+                this.outputStream = server.socket.getOutputStream();
+            }
+            catch (IOException e)
+            {
+                return;
+            }
+
             while(true)
             {
-                if(this.outputbuffer.size()==0)
+                if(this.outputBuffer.size()==0)
                 {
                     try
                     {
@@ -59,7 +96,7 @@ public class RemoteBodhiServer extends BaseServer
                 }
                 else
                 {
-                    String line = this.outputbuffer.remove(0);
+                    String line = this.outputBuffer.remove(0);
 
                     try
                     {
@@ -82,7 +119,9 @@ public class RemoteBodhiServer extends BaseServer
     {
         public RemoteBodhiServer server;
 
-        public ArrayList<String> inputbuffer = new ArrayList<>();
+        public ArrayList<String> inputBuffer = new ArrayList<>();
+
+        public InputStream inputStream;
 
         public InputInterpreter interpreter = new InputInterpreter(this);
 
@@ -94,20 +133,29 @@ public class RemoteBodhiServer extends BaseServer
         @Override
         public void run()
         {
+            try
+            {
+                this.inputStream = server.socket.getInputStream();
+            }
+            catch (IOException e)
+            {
+                return;
+            }
+
             while(true)
             {
                 try
                 {
-                    BufferedReader reader = new BufferedReader(new InputStreamReader(server.socket.getInputStream()));
+                    BufferedReader reader = new BufferedReader(new InputStreamReader(this.inputStream));
 
                     String line = null;
 
                     while((line=reader.readLine())!=null)
                     {
-                        this.inputbuffer.add(line);
+                        this.inputBuffer.add(line);
                     }
 
-                    this.interpreter.copyBuffer(this.inputbuffer);
+                    this.interpreter.copyBuffer(this.inputBuffer);
 
                     Thread.sleep(20);
                 }

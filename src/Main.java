@@ -8,7 +8,11 @@ public class Main
 {
     public static void main(String[] args)
     {
-        BodhiDatabase database = new BodhiDatabase(new Database("//microsoft"));
+        BodhiContext context;
+
+        BodhiDatabase bodhiDatabase = new BodhiDatabase(new Database("//microsoft"), context =new BodhiContext("//context"));
+
+        RemoteBodhiServer bodhiServer = new RemoteBodhiServer(context);
 
         //
         
@@ -16,57 +20,57 @@ public class Main
 
         //
         
-        result = database.insert("//microsoft", new Table("//employees"));
+        result = bodhiDatabase.insert("//microsoft", new Table("//employees"));
         
-        result = database.insert("//microsoft", new Table("//parking"));
+        result = bodhiDatabase.insert("//microsoft", new Table("//parking"));
 
-        result = database.insert("//microsoft", new Table("//resumes"));
+        result = bodhiDatabase.insert("//microsoft", new Table("//resumes"));
 
-        result = database.insert("//microsoft", new Table("//security"));
-
-        //
-
-        result = database.insert("//microsoft", "//employees", new Column("//first name"));
-
-        result = database.insert("//microsoft", "//employees", new Column("//last name"));
-
-        result = database.insert("//microsoft", "//employees", new Column("//phone number"));
-
-        result = database.insert("//microsoft", "//employees", new Column("//social security number"));
-
-        result = database.insert("//microsoft", "//employees", new Column("//salary"));
+        result = bodhiDatabase.insert("//microsoft", new Table("//security"));
 
         //
 
-        result = database.insert("//microsoft", "//employees", "//first name", "Dave");
+        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//first name"));
 
-        result = database.insert("//microsoft", "//employees", "//last name", "Plummer");
+        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//last name"));
 
-        result = database.insert("//microsoft", "//employees", "//phone number", "123-456-7890");
+        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//phone number"));
 
-        result = database.insert("//microsoft", "//employees", "//social security number", "111-222-3333");
+        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//social security number"));
 
-        result = database.insert("//microsoft", "//employees", "//salary", "55.00 hourly");
-
-        //
-
-        result = database.insert("//microsoft", "//employees", "//first name", "Max");
-
-        result = database.insert("//microsoft", "//employees", "//last name", "Rupplin");
-
-        result = database.insert("//microsoft", "//employees", "//phone number", "123-456-7890");
-
-        result = database.insert("//microsoft", "//employees", "//social security number", "111-222-3333");
-
-        result = database.insert("//microsoft", "//employees", "//salary", "55.00 hourly");
+        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//salary"));
 
         //
 
-        RemoteBodhiServer server = new RemoteBodhiServer(new BodhiContext(database));
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//first name", "Dave");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//last name", "Plummer");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//phone number", "123-456-7890");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//social security number", "111-222-3333");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//salary", "55.00 hourly");
 
         //
 
-        SQLInterpreter interpreter = new SQLInterpreter(database);
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//first name", "Max");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//last name", "Rupplin");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//phone number", "123-456-7890");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//social security number", "111-222-3333");
+
+        result = bodhiDatabase.insert("//microsoft", "//employees", "//salary", "55.00 hourly");
+
+        //
+
+
+
+        //
+
+        SQLInterpreter interpreter = new SQLInterpreter(bodhiDatabase);
 
         interpreter.result = interpreter.interpret("ADD DATABASE '//citizens'");
 
