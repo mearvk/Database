@@ -1,5 +1,5 @@
 import bodhi.BodhiDatabase;
-import contexts.BodhiContext;
+import contexts.BodhiDatabaseContext;
 import database.*;
 import bodhi.network.RemoteBodhiServer;
 import database.interpreter.SQLInterpreter;
@@ -8,9 +8,9 @@ public class Main
 {
     public static void main(String[] args)
     {
-        BodhiContext context;
+        BodhiDatabaseContext bodhiDatabaseContext;
 
-        BodhiDatabase bodhiDatabase = new BodhiDatabase(new Database("//microsoft"), context = new BodhiContext("//context"));
+        BodhiDatabase bodhiDatabase = new BodhiDatabase(new Database("//microsoft"), bodhiDatabaseContext = new BodhiDatabaseContext("//context"));
 
         //
         
@@ -64,7 +64,7 @@ public class Main
 
         //
 
-        RemoteBodhiServer bodhiServer = new RemoteBodhiServer(context);
+        RemoteBodhiServer bodhiServer = new RemoteBodhiServer(bodhiDatabaseContext);
 
         //
 

@@ -1,6 +1,6 @@
 package bodhi.network;
 
-import contexts.BodhiContext;
+import contexts.BodhiDatabaseContext;
 import bodhi.BodhiDatabase;
 import contexts.DatabaseContext;
 import database.interpreter.SQLInterpreter;
@@ -25,7 +25,7 @@ public class RemoteBodhiServer extends BaseServer
         super(PORT);
     }
 
-    public RemoteBodhiServer(BodhiContext context)
+    public RemoteBodhiServer(BodhiDatabaseContext context)
     {
         super(PORT);
 

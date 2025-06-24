@@ -1,6 +1,6 @@
 package bodhi;
 
-import contexts.BodhiContext;
+import contexts.BodhiDatabaseContext;
 import database.Column;
 import database.Database;
 import database.Result;
@@ -12,14 +12,14 @@ public class BodhiDatabase
 {
     public HashMap<String, Database> databases = new HashMap<>();
 
-    public BodhiContext context;
+    public BodhiDatabaseContext context;
 
     public BodhiDatabase()
     {
 
     }
 
-    public BodhiDatabase(Database database, BodhiContext context)
+    public BodhiDatabase(Database database, BodhiDatabaseContext context)
     {
         this.databases.put(database.name, database);
 
