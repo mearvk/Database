@@ -2,7 +2,7 @@ package bodhi;
 
 import contexts.BodhiDatabaseContext;
 import database.Column;
-import database.Database;
+import database.SQLDatabase;
 import database.Result;
 import database.Table;
 
@@ -10,7 +10,7 @@ import java.util.HashMap;
 
 public class BodhiDatabase
 {
-    public HashMap<String, Database> databases = new HashMap<>();
+    public HashMap<String, SQLDatabase> databases = new HashMap<>();
 
     public BodhiDatabaseContext context;
 
@@ -19,19 +19,19 @@ public class BodhiDatabase
 
     }
 
-    public BodhiDatabase(Database database, BodhiDatabaseContext context)
+    public BodhiDatabase(SQLDatabase database, BodhiDatabaseContext context)
     {
         this.databases.put(database.name, database);
 
         this.context = context;
     }
 
-    public Database getDatabase(String name)
+    public SQLDatabase getDatabase(String name)
     {
         return this.databases.get(name);
     }
 
-    public void addDatabase(Database database)
+    public void addDatabase(SQLDatabase database)
     {
         this.databases.put(database.name, database);
     }
@@ -42,7 +42,7 @@ public class BodhiDatabase
 
         //
 
-        Database database = this.databases.get(databasename);
+        SQLDatabase database = this.databases.get(databasename);
 
         if(database==null)
         {
@@ -84,7 +84,7 @@ public class BodhiDatabase
 
         //
 
-        Database database = this.databases.get(databasename);
+        SQLDatabase database = this.databases.get(databasename);
 
         if(database==null)
         {
@@ -106,7 +106,7 @@ public class BodhiDatabase
 
         //
 
-        Database database = this.databases.get(databasename);
+        SQLDatabase database = this.databases.get(databasename);
 
         if(database==null)
         {

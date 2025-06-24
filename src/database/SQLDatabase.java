@@ -2,12 +2,12 @@ package database;
 
 import java.util.HashMap;
 
-public class Database
+public class SQLDatabase
 {
     public String name;
 
     public HashMap<String, Table> tables = new HashMap<>();
-    public Database(String name)
+    public SQLDatabase(String name)
     {
         this.name = name;
     }

@@ -2,7 +2,7 @@ package database;
 
 public class Result
 {
-    public Database database;
+    public SQLDatabase database;
 
     public Table table;
 

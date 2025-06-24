@@ -2,7 +2,7 @@ package database.interpreter;
 
 import bodhi.BodhiDatabase;
 import database.Column;
-import database.Database;
+import database.SQLDatabase;
 import database.Table;
 
 import java.util.regex.Matcher;
@@ -39,7 +39,7 @@ public class SQLInterpreter
             {
                 String databasename = matcher.group(1);
 
-                this.bodhidatabase.databases.put(databasename, new Database(databasename));
+                this.bodhidatabase.databases.put(databasename, new SQLDatabase(databasename));
             }
 
             //
@@ -62,7 +62,7 @@ public class SQLInterpreter
 
                 if(databasename != null)
                 {
-                    Database database = this.bodhidatabase.databases.get(databasename);
+                    SQLDatabase database = this.bodhidatabase.databases.get(databasename);
 
                     if(database != null)
                     {
@@ -97,7 +97,7 @@ public class SQLInterpreter
             {
                 String databasename = matcher.group(1);
 
-                Database database = this.bodhidatabase.databases.get(databasename);
+                SQLDatabase database = this.bodhidatabase.databases.get(databasename);
 
                 if(database != null)
                 {
@@ -142,7 +142,7 @@ public class SQLInterpreter
             {
                 String databasename = matcher.group(1);
 
-                Database database = this.bodhidatabase.databases.get(databasename);
+                SQLDatabase database = this.bodhidatabase.databases.get(databasename);
 
                 if(database != null)
                 {
