@@ -4,10 +4,6 @@ import database.*;
 import bodhi.network.RemoteBodhiServer;
 import database.interpreter.SQLInterpreter;
 
-
-import java.io.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 public class Main
 {
     public static void main(String[] args)
@@ -78,7 +74,20 @@ public class Main
 
         interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ALTER TABLE '//employees' ADD COLUMN '//social security number'");
 
-        interpreter.result =  interpreter.interpret("INSERT INTO DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' VALUE '123-456-7890'");
+        //
+
+        interpreter.result = interpreter.interpret("DROP DATABASE '//citizens'");
+
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' DROP TABLE '//ages'");
+
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ALTER TABLE '//employees' DROP COLUMN '//social security number'");
+
+        //
+
+        interpreter.result =  interpreter.interpret("INSERT INTO DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' SET VALUE '123-456-7890'");
+
+        interpreter.result =  interpreter.interpret("UPDATE DATABASE '//microsoft' WHERE TABLE EQUALS '//employees' WHERE COLUMN EQUALS '//social security number' SET VALUE '123-456-7890'");
+
     }
 }
 
