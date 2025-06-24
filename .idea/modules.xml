@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/Bodhi.iml" filepath="$PROJECT_DIR$/Bodhi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/BodhiDatabase.iml" filepath="$PROJECT_DIR$/BodhiDatabase.iml" />
     </modules>
   </component>
 </project>
