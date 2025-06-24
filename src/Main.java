@@ -80,7 +80,15 @@ public class Main
 
         interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' DROP TABLE '//ages'");
 
-        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ALTER TABLE '//employees' DROP COLUMN '//social security number'");
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' TABLE '//employees' DROP COLUMN '//social security number'");
+
+        //
+
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' CHANGE TO '//citizen ID'");
+
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' ALTER TABLE '//ages' CHANGE TO '//age'");
+
+        interpreter.result = interpreter.interpret("ALTER DATABASE '//citizens' TABLE '//employees' ALTER COLUMN '//social security number' CHANGE TO '//SSN'");
 
         //
 
