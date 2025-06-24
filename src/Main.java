@@ -19,48 +19,86 @@ public class Main
         //
         
         result = bodhiDatabase.insert("//microsoft", new Table("//employees"));
+
+        if(result.error!=null) { System.out.println(result.error); return; }
         
         result = bodhiDatabase.insert("//microsoft", new Table("//parking"));
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", new Table("//resumes"));
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", new Table("//security"));
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         //
 
         result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//first name"));
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//last name"));
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//phone number"));
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//social security number"));
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//salary"));
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         //
 
         result = bodhiDatabase.insert("//microsoft", "//employees", "//first name", "Dave");
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", "//last name", "Plummer");
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         result = bodhiDatabase.insert("//microsoft", "//employees", "//phone number", "123-456-7890");
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", "//social security number", "111-222-3333");
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", "//salary", "55.00 hourly");
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         //
 
         result = bodhiDatabase.insert("//microsoft", "//employees", "//first name", "Max");
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", "//last name", "Rupplin");
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         result = bodhiDatabase.insert("//microsoft", "//employees", "//phone number", "123-456-7890");
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", "//social security number", "111-222-3333");
 
+        if(result.error!=null) { System.out.println(result.error); return; }
+
         result = bodhiDatabase.insert("//microsoft", "//employees", "//salary", "55.00 hourly");
+
+        if(result.error!=null) { System.out.println(result.error); return; }
 
         //
 

@@ -2,13 +2,15 @@ package database;
 
 public class Result
 {
-    public SQLDatabase database;
+    public SQLDatabase database = null;
 
-    public Table table;
+    public Table table = null;
 
-    public Column column;
+    public Column column = null;
 
-    public Object object;
+    public Object object = null;
 
-    public String error;
+    public String error = null;
+
+    public String stdio = null;
 }
