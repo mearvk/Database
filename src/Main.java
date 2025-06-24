@@ -12,8 +12,6 @@ public class Main
 
         BodhiDatabase bodhiDatabase = new BodhiDatabase(new Database("//microsoft"), context = new BodhiContext("//context"));
 
-        RemoteBodhiServer bodhiServer = new RemoteBodhiServer(context);
-
         //
         
         Result result;
@@ -66,7 +64,7 @@ public class Main
 
         //
 
-
+        RemoteBodhiServer bodhiServer = new RemoteBodhiServer(context);
 
         //
 
