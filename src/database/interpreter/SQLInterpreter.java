@@ -1,9 +1,9 @@
 package database.interpreter;
 
 import bodhi.BodhiDatabase;
-import database.Column;
+import database.SQLColumn;
 import database.SQLDatabase;
-import database.Table;
+import database.SQLTable;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -70,7 +70,7 @@ public class SQLInterpreter
 
                         if(tablename != null)
                         {
-                            database.tables.put(tablename, new Table(tablename));
+                            database.tables.put(tablename, new SQLTable(tablename));
                         }
                         else return new InterpreterResult("No table name found.","No errors.");
                     }
@@ -105,7 +105,7 @@ public class SQLInterpreter
 
                     if(tablename != null)
                     {
-                        Table table = database.tables.get(tablename);
+                        SQLTable table = database.tables.get(tablename);
 
                         if(table != null)
                         {
@@ -113,7 +113,7 @@ public class SQLInterpreter
 
                             if(columnname != null)
                             {
-                                table.columns.put(new Column(columnname));
+                                table.columns.put(new SQLColumn(columnname));
                             }
                             else return new InterpreterResult("No column name found.","No errors.");
                         }
@@ -150,7 +150,7 @@ public class SQLInterpreter
 
                     if(tablename != null)
                     {
-                        Table table = database.tables.get(tablename);
+                        SQLTable table = database.tables.get(tablename);
 
                         if(table != null)
                         {
@@ -158,7 +158,7 @@ public class SQLInterpreter
 
                             if(columnname != null)
                             {
-                                Column column = table.columns.get(columnname);
+                                SQLColumn column = table.columns.get(columnname);
 
                                 if(column != null) //Add support for File object types
                                 {

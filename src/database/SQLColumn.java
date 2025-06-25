@@ -2,7 +2,7 @@ package database;
 
 import java.util.ArrayList;
 
-public class Column
+public class SQLColumn
 {
     public String name;
 
@@ -10,7 +10,7 @@ public class Column
 
     public Object object;
 
-    public Column(String name)
+    public SQLColumn(String name)
     {
         this.name = name;
 

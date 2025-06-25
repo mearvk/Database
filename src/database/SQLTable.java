@@ -2,29 +2,29 @@ package database;
 
 import java.util.HashMap;
 
-public class Table
+public class SQLTable
 {
     public String name;
 
-    public Column column;
+    public SQLColumn column;
 
     public List columns = new List();
 
-    public Table(String name)
+    public SQLTable(String name)
     {
         this.name = name;
     }
 
     public static class List
     {
-        public HashMap<String, Column> items = new HashMap<>();
+        public HashMap<String, SQLColumn> items = new HashMap<>();
 
-        public Column get(String name)
+        public SQLColumn get(String name)
         {
             return items.get(name);
         }
 
-        public void put(Column column)
+        public void put(SQLColumn column)
         {
             this.items.put(column.name,column);
         }

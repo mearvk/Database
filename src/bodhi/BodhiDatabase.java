@@ -1,10 +1,10 @@
 package bodhi;
 
 import contexts.BodhiDatabaseContext;
-import database.Column;
+import database.SQLColumn;
 import database.SQLDatabase;
-import database.Result;
-import database.Table;
+import database.SQLResult;
+import database.SQLTable;
 
 import java.util.HashMap;
 
@@ -36,9 +36,9 @@ public class BodhiDatabase
         this.databases.put(database.name, database);
     }
 
-    public Result insert(String databasename, String tablename, String columnname, Object object)
+    public SQLResult insert(String databasename, String tablename, String columnname, Object object)
     {
-        Result result = new Result();
+        SQLResult result = new SQLResult();
 
         //
 
@@ -53,7 +53,7 @@ public class BodhiDatabase
 
         //
 
-        Table table = database.tables.get(tablename);
+        SQLTable table = database.tables.get(tablename);
 
         if(table==null)
         {
@@ -64,7 +64,7 @@ public class BodhiDatabase
 
         //
 
-        Column column = table.columns.get(columnname);
+        SQLColumn column = table.columns.get(columnname);
 
         if(column==null)
         {
@@ -78,9 +78,9 @@ public class BodhiDatabase
         return result;
     }
 
-    public Result insert(String databasename, Table table)
+    public SQLResult insert(String databasename, SQLTable table)
     {
-        Result result = new Result();
+        SQLResult result = new SQLResult();
 
         //
 
@@ -100,9 +100,9 @@ public class BodhiDatabase
         return result;
     }
 
-    public Result insert(String databasename, String tablename, Column column)
+    public SQLResult insert(String databasename, String tablename, SQLColumn column)
     {
-        Result result = new Result();
+        SQLResult result = new SQLResult();
 
         //
 
@@ -117,7 +117,7 @@ public class BodhiDatabase
 
         //
 
-        Table table = database.tables.get(tablename);
+        SQLTable table = database.tables.get(tablename);
 
         if(table==null)
         {

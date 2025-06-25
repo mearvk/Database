@@ -6,19 +6,19 @@ public class SQLDatabase
 {
     public String name;
 
-    public HashMap<String, Table> tables = new HashMap<>();
+    public HashMap<String, SQLTable> tables = new HashMap<>();
     public SQLDatabase(String name)
     {
         this.name = name;
     }
 
-    public Result insert(Table table, Column column, Object object)
+    public SQLResult insert(SQLTable table, SQLColumn column, Object object)
     {
         if(table==null)
         {
-            Result result;
+            SQLResult result;
 
-            result = new Result();
+            result = new SQLResult();
 
             result.error = "Table is unexpectedly null.";
 
@@ -29,9 +29,9 @@ public class SQLDatabase
 
         if(column==null)
         {
-            Result result;
+            SQLResult result;
 
-            result = new Result();
+            result = new SQLResult();
 
             result.error = "Column is unexpectedly null.";
 
@@ -44,7 +44,7 @@ public class SQLDatabase
 
         //
 
-        Result result = new Result();
+        SQLResult result = new SQLResult();
 
         result.database = this;
 
@@ -59,11 +59,11 @@ public class SQLDatabase
         return result;
     }
 
-    public Result insert(Table table)
+    public SQLResult insert(SQLTable table)
     {
         this.tables.put(table.name, table);
 
-        Result result = new Result();
+        SQLResult result = new SQLResult();
 
         result.database = this;
 
@@ -72,11 +72,11 @@ public class SQLDatabase
         return result;
     }
 
-    public Result insert(Table table, Column column)
+    public SQLResult insert(SQLTable table, SQLColumn column)
     {
         table.columns.put(column);
 
-        Result result = new Result();
+        SQLResult result = new SQLResult();
 
         result.database = this;
 

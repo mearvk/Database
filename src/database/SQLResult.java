@@ -1,12 +1,12 @@
 package database;
 
-public class Result
+public class SQLResult
 {
     public SQLDatabase database = null;
 
-    public Table table = null;
+    public SQLTable table = null;
 
-    public Column column = null;
+    public SQLColumn column = null;
 
     public Object object = null;
 

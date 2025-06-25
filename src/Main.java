@@ -14,45 +14,45 @@ public class Main
 
         //
         
-        Result result;
+        SQLResult result;
 
         //
         
-        result = bodhiDatabase.insert("//microsoft", new Table("//employees"));
+        result = bodhiDatabase.insert("//microsoft", new SQLTable("//employees"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
         
-        result = bodhiDatabase.insert("//microsoft", new Table("//parking"));
+        result = bodhiDatabase.insert("//microsoft", new SQLTable("//parking"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
-        result = bodhiDatabase.insert("//microsoft", new Table("//resumes"));
+        result = bodhiDatabase.insert("//microsoft", new SQLTable("//resumes"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
-        result = bodhiDatabase.insert("//microsoft", new Table("//security"));
+        result = bodhiDatabase.insert("//microsoft", new SQLTable("//security"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
         //
 
-        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//first name"));
+        result = bodhiDatabase.insert("//microsoft", "//employees", new SQLColumn("//first name"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
-        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//last name"));
+        result = bodhiDatabase.insert("//microsoft", "//employees", new SQLColumn("//last name"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
-        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//phone number"));
+        result = bodhiDatabase.insert("//microsoft", "//employees", new SQLColumn("//phone number"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
-        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//social security number"));
+        result = bodhiDatabase.insert("//microsoft", "//employees", new SQLColumn("//social security number"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
-        result = bodhiDatabase.insert("//microsoft", "//employees", new Column("//salary"));
+        result = bodhiDatabase.insert("//microsoft", "//employees", new SQLColumn("//salary"));
 
         if(result.error!=null) { System.out.println(result.error); return; }
 
