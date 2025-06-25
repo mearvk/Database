@@ -1,5 +1,4 @@
-package database.interpreter;
-
+package interpreter;
 public class InterpreterResult
 {
     public String stdout;

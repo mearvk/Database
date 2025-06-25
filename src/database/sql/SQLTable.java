@@ -1,4 +1,6 @@
-package database;
+package database.sql;
+
+import database.sql.SQLColumn;
 
 import java.util.HashMap;
 

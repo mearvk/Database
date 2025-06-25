@@ -1,9 +1,9 @@
-package database.interpreter;
+package interpreter;
 
 import bodhi.BodhiDatabase;
-import database.SQLColumn;
-import database.SQLDatabase;
-import database.SQLTable;
+import database.sql.SQLColumn;
+import database.sql.SQLDatabase;
+import database.sql.SQLTable;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;

@@ -1,10 +1,10 @@
 package bodhi;
 
 import contexts.BodhiDatabaseContext;
-import database.SQLColumn;
-import database.SQLDatabase;
-import database.SQLResult;
-import database.SQLTable;
+import database.sql.SQLColumn;
+import database.sql.SQLDatabase;
+import database.sql.SQLResult;
+import database.sql.SQLTable;
 
 import java.util.HashMap;
 
